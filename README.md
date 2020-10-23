@@ -7,5 +7,5 @@ Day 2
     Database
 
 Day 3
-    Routing and Rendering
+    Routing and Rendering, 
     Database Connection
