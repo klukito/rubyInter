@@ -612,8 +612,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> add foreign key (item_id) references items(id);
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add foreign key (item_id) references items(id)' at line 1
-mysql> alter table item_categories add foreign key (item_id) references items(id
-);
+mysql> alter table item_categories add foreign key (item_id) references items(id);
 Query OK, 7 rows affected (0.03 sec)
 Records: 7  Duplicates: 0  Warnings: 0
 
