@@ -9,3 +9,7 @@ Day 2
 Day 3
     Routing and Rendering, 
     Database Connection
+
+Day 4
+    HTTP, Routing, Static, Dynamic Tag
+    Database Connection, Query Database, CRUD Value
