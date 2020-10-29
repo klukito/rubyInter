@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+        <link rel="stylesheet" href="style.css">
+        <title>Add Food</title>
+    </head>
+
+    <body>
+        <h1 >Add New Food</h1>
+
+        <br>
+            
+        <form class="field center-me " action="#" method="post">
+            <input type="hidden" name="authenticity_token" value=""/>
+
+            <table class="box p">
+                <th>
+                    <label for="food_name">Name:</label>
+                    <input type="text" name="food[name]" id="food_name" />
+                </th>   
+                <th>
+                    <label for="food_price">Price:</label>
+                    <input type="text" name="food[price]" id="food_price" />
+                </th>
+            </table>
+            
+        </form>
+
+        <form>
+            <div class="actions">
+                <input type="submit" name="commit" value="Create Food" data-disable-with="Create Food" />
+            </div>
+        </form>
+
+        <br>
+
+        <a style="color:#FDF9EA" href="list_food.html">Back</a>
+    </body>
+</html>
