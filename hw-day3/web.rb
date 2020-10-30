@@ -18,7 +18,8 @@ end
 post '/items/create' do
     name = params['name']
     price = params['price']
-    create_new_item(name, price, categoriy_id)
+    category_id = params['category_id']
+    create_new_item(name, price, category_id)
     redirect '/'
 end
 
