@@ -12,17 +12,23 @@ end
 
 get '/items/create' do 
     categories = get_all_categories()
+    name = params['name']
+    price = params['price']
+    category_name = params['category_name']
     erb :create, locals: {
-        categories: categories
+        categories: categories,
+        name: name,
+        price: price,
+        category_name: category_name
     }
 end
+
 
 post '/items/create' do
     name = params['name']
     price = params['price']
-    category_id = params['category_id']
     category_name = params['category_name']
-    create_new_itemname, price, category_id, category_name)
+    create_new_item(name, price, category_name)
     redirect '/'
 end
 
