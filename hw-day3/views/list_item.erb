@@ -32,12 +32,12 @@
 
                     <% categories.each do |category| %>
                         <tr>
-                            <td><%= category.category_name %></td>
+                            <td><%= category.name %></td>
                         </tr>
                     <% end %>
                 </tbody>
             </table>
         </div>
-        <a style="color:<%=#FDF9EA%>" rel="alternate" href="<%= url ('create.erb') %>"> Add New Item</a>
+        <a style="color:#FDF9EA" rel="alternate" href="<%= url ('create.erb') %>"> Add New Item</a>
     </body> 
 </html>
