@@ -27,10 +27,7 @@
                         <tr>
                             <td><%= item.name %></td>
                             <td>Rp <%= item.price %>,00 </td>
-                        
-                            <% categories.each do |category| %>
-                                <td><%= category.name %></td>
-                            <% end %>
+                            <td><%= item.category.name %></td>
                         </tr>
                     <% end %>
 
