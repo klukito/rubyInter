@@ -4,7 +4,8 @@ require './db_connector'
 get '/' do
     items = get_all_items_with_categories()
     erb :list_item, locals: {
-        items: items
+        items: items,
+        categories: categories
     }
 end
 
