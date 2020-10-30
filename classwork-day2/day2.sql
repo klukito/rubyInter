@@ -628,3 +628,12 @@ mysql> describe item_categories;
 | category_id | int  | NO   | MUL | NULL    |       |
 +-------------+------+------+-----+---------+-------+
 2 rows in set (0.00 sec)
+
+mysql> describe categories;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
