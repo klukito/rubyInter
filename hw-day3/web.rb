@@ -3,6 +3,7 @@ require './db_connector'
 
 get '/' do
     items = get_all_items_with_categories()
+    categories = get_all_categories()
     erb :list_item, locals: {
         items: items,
         categories: categories
