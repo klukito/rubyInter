@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Order List</title>
+    </head>
+
+    <body>
+        <h1 style="text-align:center">ORDER LIST</h1>
+
+        <tbody>
+            <tr>
+                    <td>Reference Number</td>
+                    <td>Customer Name</td>
+                    <td>Date</td>    
+                <% orders.each do |order| %>
+                    <td><%= order.reference_no%></td>
+                    <td><%= order.customer_name%></td>
+                    <td><%= order.date%></td>
+                    <td><a href="/form/edit/order/<%= order.reference_no%>">Edit</a></td>
+                    <td><a href="/order/delete/<%= order.reference_no%>">Delete</a></td>
+                    <td><a href="/form/add/order/<%= order.reference_no%>">Add Item</a></td>
+                    <td><a href="/order/<%= order.reference_no%>/item/list">List Item</a></td>
+                <% end %>
+            
+            </tr>
+
+        </tbody>
+        <ul>
+            <li>Reference Number = <%= order.reference_no%></li>
+            <li>Customer Number = <%= order.customer_name%></li>
+            <li>Date = <%= order.date%></li>
+        </ul>
+    </body>
+</html>
