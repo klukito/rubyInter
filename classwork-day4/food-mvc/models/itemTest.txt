@@ -1,0 +1,138 @@
+#create_new_item test
+
+base) Karens-Mac:rubyInter henrylsetiawan$ erb
+^CTraceback (most recent call last):
+        2: from /usr/bin/erb:175:in `<main>'
+        1: from /usr/bin/erb:126:in `run'
+/usr/bin/erb:126:in `read': Interrupt
+
+(base) Karens-Mac:rubyInter henrylsetiawan$ irb
+
+WARNING: This version of ruby is included in macOS for compatibility with legacy software. 
+In future versions of macOS the ruby runtime will not be available by 
+default, and may require you to install an additional package.
+
+irb(main):001:0> require './db/db_connector.rb'
+Traceback (most recent call last):
+        6: from /usr/bin/irb:23:in `<main>'
+        5: from /usr/bin/irb:23:in `load'
+        4: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        3: from (irb):1
+        2: from /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        1: from /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+LoadError (cannot load such file -- ./db/db_connector.rb)
+irb(main):002:0> require 'mysql2'
+
+def create_db_client
+    client = Mysql2::Client.new(
+        :host => "127.0.0.1",
+        :username => "root",
+        :password => "gR3Ybottle!",
+        :database => ENV["db_name"]
+    )
+    client
+end
+
+=> true
+irb(main):003:0> 
+irb(main):004:0> def create_db_client
+irb(main):005:1>     client = Mysql2::Client.new(
+irb(main):006:2*         :host => "127.0.0.1",
+irb(main):007:2*         :username => "root",
+irb(main):008:2*         :password => "gR3Ybottle!",
+irb(main):009:2*         :database => ENV["db_name"]
+irb(main):010:2>     )
+irb(main):011:1>     client
+irb(main):012:1> end
+=> :create_db_client
+irb(main):013:0> 
+irb(main):014:0> client = create_db_client
+=> #<Mysql2::Client:0x00007fc108873f18 @read_timeout=nil, @query_options={:as=>:hash, :async=>false, :cast_booleans=>false, :symbolize_keys=>false, :database_timezone=>:local, :application_timezone=>nil, :cache_rows=>true, :connect_flags=>2148540933, :cast=>true, :default_file=>nil, :default_group=>nil, :host=>"127.0.0.1", :username=>"root", :password=>"gR3Ybottle!", :database=>nil}>
+irb(main):015:0> 
+irb(main):016:0>         client.query("select category.id from categories where name = main")
+Traceback (most recent call last):
+        8: from /usr/bin/irb:23:in `<main>'
+        7: from /usr/bin/irb:23:in `load'
+        6: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        5: from (irb):16
+        4: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:130:in `query'
+        3: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:130:in `handle_interrupt'
+        2: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:131:in `block in query'
+        1: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:131:in `_query'
+Mysql2::Error (No database selected)
+irb(main):017:0> require 'mysql2'
+=> false
+irb(main):018:0> 
+irb(main):019:0> def create_db_client
+irb(main):020:1>     client = Mysql2::Client.new(
+irb(main):021:2*         :host => "127.0.0.1",
+        :username => "root",
+        :password => "gR3Ybottle!",
+        :database => "food_oms_dbirb(main):022:2*         :username => "root",
+irb(main):023:2*         :password => "gR3Ybottle!",
+irb(main):024:2*         :database => "food_oms_db"
+irb(main):025:2>     )
+irb(main):026:1>     client
+irb(main):027:1> end
+=> :create_db_client
+irb(main):028:0> client = create_db_client
+=> #<Mysql2::Client:0x00007fc10c813d30 @read_timeout=nil, @query_options={:as=>:hash, :async=>false, :cast_booleans=>false, :symbolize_keys=>false, :database_timezone=>:local, :application_timezone=>nil, :cache_rows=>true, :connect_flags=>2148540933, :cast=>true, :default_file=>nil, :default_group=>nil, :host=>"127.0.0.1", :username=>"root", :password=>"gR3Ybottle!", :database=>"food_oms_db"}>
+irb(main):029:0> client.query("select category.id from categories where name = main")
+Traceback (most recent call last):
+        8: from /usr/bin/irb:23:in `<main>'
+        7: from /usr/bin/irb:23:in `load'
+        6: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        5: from (irb):29
+        4: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:130:in `query'
+        3: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:130:in `handle_interrupt'
+        2: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:131:in `block in query'
+        1: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:131:in `_query'
+Mysql2::Error (Unknown column 'category.id' in 'field list')
+irb(main):030:0> client.query("select categories.id from categories where name = main")
+Traceback (most recent call last):
+        9: from /usr/bin/irb:23:in `<main>'
+        8: from /usr/bin/irb:23:in `load'
+        7: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        6: from (irb):30
+        5: from (irb):30:in `rescue in irb_binding'
+        4: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:130:in `query'
+        3: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:130:in `handle_interrupt'
+        2: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:131:in `block in query'
+        1: from /Library/Ruby/Gems/2.6.0/gems/mysql2-0.5.3/lib/mysql2/client.rb:131:in `_query'
+Mysql2::Error (Unknown column 'main' in 'where clause')
+irb(main):031:0> client.query("select categories.id from categories where name = 'main dish'")
+=> #<Mysql2::Result:0x00007fc10c0a1368 @query_options={:as=>:hash, :async=>false, :cast_booleans=>false, :symbolize_keys=>false, :database_timezone=>:local, :application_timezone=>nil, :cache_rows=>true, :connect_flags=>2148540933, :cast=>true, :default_file=>nil, :default_group=>nil, :host=>"127.0.0.1", :username=>"root", :password=>"gR3Ybottle!", :database=>"food_oms_db"}, @server_flags={:no_good_index_used=>false, :no_index_used=>true, :query_was_slow=>false}>
+irb(main):032:0> test = client.query("select categories.id from categories where name = 'main dish'")
+=> #<Mysql2::Result:0x00007fc109902c08 @query_options={:as=>:hash, :async=>false, :cast_booleans=>false, :symbolize_keys=>false, :database_timezone=>:local, :application_timezone=>nil, :cache_rows=>true, :connect_flags=>2148540933, :cast=>true, :default_file=>nil, :default_group=>nil, :host=>"127.0.0.1", :username=>"root", :password=>"gR3Ybottle!", :database=>"food_oms_db"}, @server_flags={:no_good_index_used=>false, :no_index_used=>true, :query_was_slow=>false}>
+irb(main):033:0> test.each
+=> [{"id"=>1}]
+irb(main):034:0> test["id"]
+Traceback (most recent call last):
+        4: from /usr/bin/irb:23:in `<main>'
+        3: from /usr/bin/irb:23:in `load'
+        2: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        1: from (irb):34
+NoMethodError (undefined method `[]' for #<Mysql2::Result:0x00007fc109902c08>)
+irb(main):035:0> test.each["id']
+irb(main):036:1" test.each["id"]^C
+irb(main):036:0> test.each["id"]
+Traceback (most recent call last):
+        6: from /usr/bin/irb:23:in `<main>'
+        5: from /usr/bin/irb:23:in `load'
+        4: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        3: from (irb):36
+        2: from (irb):36:in `rescue in irb_binding'
+        1: from (irb):36:in `each'
+LocalJumpError (no block given)
+irb(main):037:0> test.each.first["id"]
+Traceback (most recent call last):
+        6: from /usr/bin/irb:23:in `<main>'
+        5: from /usr/bin/irb:23:in `load'
+        4: from /Library/Ruby/Gems/2.6.0/gems/irb-1.0.0/exe/irb:11:in `<top (required)>'
+        3: from (irb):37
+        2: from (irb):37:in `rescue in irb_binding'
+        1: from (irb):37:in `each'
+LocalJumpError (no block given)
+irb(main):038:0> test.map
+=> #<Enumerator: #<Mysql2::Result:0x00007fc109902c08 @query_options={:as=>:hash, :async=>false, :cast_booleans=>false, :symbolize_keys=>false, :database_timezone=>:local, :application_timezone=>nil, :cache_rows=>true, :connect_flags=>2148540933, :cast=>true, :default_file=>nil, :default_group=>nil, :host=>"127.0.0.1", :username=>"root", :password=>"gR3Ybottle!", :database=>"food_oms_db"}, @server_flags={:no_good_index_used=>false, :no_index_used=>true, :query_was_slow=>false}>:map>
+irb(main):039:0> 
