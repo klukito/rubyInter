@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Order Information</title>
+    </head>
+
+    <body>
+        <h1 style="text-align:center">ORDER INFORMATION</h1>
+
+        <ul>
+            <li>Reference Number = <%= order.reference_no%></li>
+            <li>Customer Number = <%= order.customer_name%></li>
+            <li>Date = <%= order.date%></li>
+        </ul>
+    </body>
+    <a style="color:#FDF9EA" rel="alternate" href="<%= url ('/order/create') %>"> Add New Item</a>
+</html>

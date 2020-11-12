@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>New Order</title>
+    </head>
+
+    <body>
+        <h1 >Create New Item</h1>
+
+        <form class="field center-me" method="POST" action="/item/add/<%= reference_no %>">
+
+            <table class="box p">
+                <th>
+                    <label for="ref_no">IF:</label>
+                     <input type="text" name="id" placeholder="Order ID " id="id" />
+                </th>
+                <th>
+                    <label for="item_name">Name:</label>
+                    <input type="text" name="name" placeholder="Name " id="item_name" />
+                </th>   
+                <th>
+                    <label for="item_price">Price:</label>
+                    <input type="text" name="price" placeholder="Price " id="item_price" />
+                </th>
+                <br>
+            </table>
+        <br>
+        <button type="submit"> Submit </button>
+        </form>
+        <br>
+
+    <a style="color:#FDF9EA" href="<%= url ('/orders/list') %>">List Orders</a>
+    </body>
+</html>
