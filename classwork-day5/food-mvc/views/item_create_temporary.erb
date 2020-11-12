@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+        <link rel="stylesheet" href="<%= URI ('style.css') %>">
+        <title>Add Item</title>
+    </head>
+
+    <body>
+        <h1 >Create New Item</h1>
+
+        <form class="field center-me" method="POST" action="/items/create">
+
+            <table class="box p">
+                <th>
+                    <label for="item_name">Name:</label>
+                    <input type="text" name="name" placeholder="Name " id="item_name" />
+                </th>   
+                <th>
+                    <label for="item_price">Price:</label>
+                    <input type="text" name="price" placeholder="Price " id="item_price" />
+                </th>
+                
+                <br>
+            </table>
+        <br>
+        <button type="submit"> Add Item </button>
+        </form>
+        <br>
+
+    </body>
+</html>
+
+<a style="color:#FDF9EA" href="<%= URI ('/items/list') %>">List Items</a>
