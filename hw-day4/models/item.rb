@@ -8,18 +8,14 @@ class Item
         @name = name
         @price = price
         @id = id
-        @category = category
+        @category_id = category_id
         @description = description
     end
 
     def save
         return false unless valid?
 
-        client = create_db_client
-        client.query("insert into items(name, price) values('#{name}', '#{price}')")
-        client.query("select categories.id from categories where name = '#{category_name}'")
-        #tinggal connect category_name sama category_id 
-    #     #client.query("insert into item_categories(item_id, category_id) values(#{client.last_id}, #{category_id})")
+        self.create_new_item()
     end
 
     def valid?
@@ -27,6 +23,12 @@ class Item
         return false if @price.nil?
         return false if @category_name.nil?
         true
+    end
+
+    def self.create_new_item(name, price, category_id)
+        client = create_db_client
+        client.query("insert into items(name, price) values('#{name}', '#{price}')")
+        client.query("insert into item_categories(item_id, category_id) values(#{client.last_id}, #{category_id})")
     end
 
     def self.get_all_items
@@ -62,15 +64,22 @@ class Item
         items
     end
 
-    # def self.create_new_item(name, price, category_name)
-    #     client = create_db_client
-    #     client.query("insert into items(name, price) values('#{name}', '#{price}')")
-    #     client.query("select categories.id from categories where name = '#{category_name}")
-    #     #tinggal connect category_name sama category_id 
-    #     #client.query("insert into item_categories(item_id, category_id) values(#{client.last_id}, #{category_id})")
-        
-    # end
 
+    #TODO:
+    def self.edit_item(id, name, price, category_id)
+        client = create_db_client
+        selected_data = client.query("select * from items where id = #{id}")
+        if selected_data == nil
+            puts("Please insert a valid id")
+        else 
+            client.query("update items set items.name = '#{name}', items.price = '#{price}', categories.id = '#{category_id}', where id = '#{id}'")
+    end
+
+    #TODO:
+    def self.delete_item(name, price, category_id)
+        client = create_db_client
+        client.query(" ")
+    end
     
 end
 
