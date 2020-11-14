@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Add Item</title>
+    </head>
+
+    <body>
+        <h1 >Create New Item</h1>
+
+        <form class="field center-me" method="POST" action="/items/create">
+
+            <table class="box p">
+                <th>
+                    <label for="item_name">Name:</label>
+                    <input type="text" name="name" placeholder="Name " id="item_name" />
+                </th>   
+                <th>
+                    <label for="item_price">Price:</label>
+                    <input type="text" name="price" placeholder="Price " id="item_price" />
+                </th>
+                <th>
+                    <label for="item_category">Category:</label>
+                     <select id="item_category" name="category">
+                        <% categories.each do |category| %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% end %>
+                    </select>
+                </th>
+                <br>
+            </table>
+        <br>
+        <button type="submit"> Add Item </button>
+        </form>
+        <br>
+
+    </body>
+</html>
+
+<a style="color:#FDF9EA" href="<%= uri('./create.erb') %>">List Items</a>

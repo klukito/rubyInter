@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Order List</title>
+    </head>
+
+    <body>
+        <h1 style="text-align:center">Order List</h1>
+
+        <tbody>
+            <tr>
+                    <td>Reference Number</td>
+                    <td>Customer Name</td>
+                    <td>Date</td>    
+                <% orders.each do |order| %>
+                    <td><%= order.reference_no%></td>
+                    <td><%= order.customer_name%></td>
+                    <td><%= order.date%></td>
+                    <td>
+                        <a href="<%= uri('./edit.erb') %>">Edit</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="/order/delete/<%=order.reference_no%>">
+                            <button type="submit"> Delete </button>
+                        </form>
+                    </td>
+                    <td><a href="/form/add/order/<%= order.reference_no%>">Add Item</a></td>
+                    <td><a href="/order/<%= order.reference_no%>/item/list">List Item</a></td>
+                <% end %>
+            
+            </tr>
+
+        </tbody>
+
+    <a style="color:#FDF9EA" rel="alternate" href="<%= uri('./create.erb') %>"> Create New Order</a>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Order Information</title>
+    </head>
+
+    <body>
+        <h1 style="text-align:center">Order Information</h1>
+
+         <table class="box p">
+                <th>
+                    Reference Number = <%= order.reference_no%>
+                </th>
+                <th>
+                    Customer Number = <%= order.customer_name%>
+                </th>   
+                <th>
+                    Date = <%= order.date%>
+                </th>
+                <br>
+            </table>
+    </body>
+    <a style="color:#FDF9EA" rel="alternate" href="<%= url ('/create.erb') %>"> Add New Item</a>
+</html>
