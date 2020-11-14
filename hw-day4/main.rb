@@ -25,12 +25,12 @@ end
 post '/order/create' do
     controller = OrderController.new
     controller.create_order(params)
- end
+end
  
- get '/order/find' do
+get '/order/find' do
      controller = OrderController.new
      controller.find_order(params)
- end
+end
 
 get '/items/create' do 
     categories = Category.get_all_categories() #static/class method
@@ -45,52 +45,62 @@ get '/items/create' do
     }
 end
 
-
 post '/items/create' do
     name = params['name']
     price = params['price']
-    category_name = params['category_name']
-    Item.create_new_item(name, price, category_name)
+    category_id = params['category_id']
+    Item.edit_item(name, price, category_id)
     redirect '/'
 end
 
-# get '/form/create/order' do
-#     controller = OrderController.new
-#     controller.show_create_order_form(params)
-# end
+get '/items/edit' do
+    item_controller = ItemController.new
+    item_controller.edit_order(params)
+end
 
-# get '/form/add/item/:ref_no' do
-#     controller = OrderController.new
-#     controller.show_add_item_for_order_form(params)
-# end
+get '/items/delete' do
+    item_controller = ItemController.new
+    item_controller.delete_order(params)
+end
+##
 
-# post '/item/add/:ref_no' do
-#     controller = OrderController.new
-#     controller.show_add_item_for_order_form(params)
-# end
+get '/form/create/order' do
+    controller = OrderController.new
+    controller.show_create_order_form(params)
+end
 
-# post '/order' do
-#    controller = OrderController.new
-#    controller.create_order(params)
-# end
+get '/form/add/item/:ref_no' do
+    controller = OrderController.new
+    controller.add_item(params)
+end
 
-# get '/order' do
-#     controller = OrderController.new
-#     controller.find_order(params)
-# end
+post '/item/add/:ref_no' do
+    controller = OrderController.new
+    controller.show_add_item_for_order_form(params)
+end
 
+post '/orders' do
+   controller = OrderController.new
+   controller.create_order(params)
+end
 
-get '/order/edit/:ref_no' do
+get '/orders' do
+    controller = OrderController.new
+    controller.find_order(params)
+end
+
+##
+get '/orders/edit/:ref_no' do
     controller = OrderController.new
     controller.edit_order(params)
 end
 
-get '/order/delete/:ref_no' do
+get '/orders/delete/:ref_no' do
     controller = OrderController.new
     controller.delete_order(params)
 end
 
-get '/order/:id' do
+get '/orders/:id' do
     controller = OrderController.new
     controller.find_by_id(params)
 end
