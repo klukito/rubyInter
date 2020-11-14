@@ -1,10 +1,10 @@
 #2
 
 create table items (
-    item_id int not null auto_increment, 
+    id int not null auto_increment, 
     name varchar(60) default null,
     price int default null,
-    primary key (item_id)
+    primary key (id)
 );
 
 create table customers (
@@ -29,7 +29,7 @@ create table order_details (
     quantity int,
     primary key (orderDetails_id),
     foreign key (order_id) references orders(order_id),
-    foreign key (item_id) references items(item_id)
+    foreign key (item_id) references items(id)
 );
 
 #3
@@ -55,6 +55,13 @@ insert into orders (customer_id, order_date) values
 (3, '2020-10-22'),
 (4, '2020-10-23'),
 (5, '2020-10-23');
+
+insert into orders (customer_id, order_date) values
+(1, now()),
+(2, now()),
+(3, now()),
+(4, now()),
+(5, now());
 
 insert into order_details (order_id, item_id, quantity) values
 (1, 1, 1), #add nasi goreng gila
@@ -83,5 +90,5 @@ select o.order_id as 'Order ID',
 from orders o
 inner join customers c on o.customer_id = c.customer_id
 inner join order_details od on o.order_id = od.order_id
-inner join items i on i.item_id = od.item_id
+inner join items i on i.id = od.item_id
 group by o.order_id;
