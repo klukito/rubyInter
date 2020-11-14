@@ -1,6 +1,5 @@
 require './models/item.rb'
 
-
 class ItemController
     def show_order_form
         renderer = ERB.new(File.read("./views/create_item.erb"))
@@ -9,9 +8,9 @@ class ItemController
 
     def create_item(params)
         item = Item.new({
-            id: params['id']
-            name: params['name']
-            price: params['price']
+            id: params['id'],
+            name: params['name'],
+            price: params['price'],
             order: self
         })
 
@@ -35,41 +34,36 @@ class ItemController
         categories = Category.get_all_categories() #static/class method
         name = params['name']
         price = params['price']
-        category_name = params['category_name']
+        category_id = params['category_id']
         erb :create, locals: {
             categories: categories,
             name: name,
             price: price,
-            category_name: category_name
+            category_id: category_id
         }
     end
 
     #TODO:
     def edit_item(params)
-        item = Item.new({
-            id: params['id']
-            name: params['name']
-            price: params['price']
-            order: self
-        })
-
+        name = params['name']
+        price = params['price']
+        category_id = params['category_id']
+        erb :edit, locals: {
+            name: name,
+            price: price,
+            category_id: category_id
+        }
+    
         item.edit
         item
-        
-        #i think you can just simply update the edit method in item
-        #so that you can choose a specific item using mysql
-        #and then edit it
-        
     end
 
     #TODO:
     def delete_item(params)
-        item = Item.new({
-            id: params['id']
-            name: params['name']
-            price: params['price']
-            order: self
-        })
+        id = params['id']
+        erb :delete, locals: {
+            id: id
+        }
 
         item.delete
         item
