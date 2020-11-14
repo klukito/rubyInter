@@ -9,6 +9,10 @@ class Category
         @items = []
     end
 
+    def valid?
+        return false if @name.nil?
+    end
+
     def self.get_category(id)
         client = create_db_client
         raw_data = client.query("select * from categories where id = #{id}")
@@ -20,7 +24,7 @@ class Category
     #TODO: 
     def self.get_items_with_category(id)
         client = create_db_client
-        raw_data = client.query("select * from itemOnCategories where category_id = #{id};")
+        raw_data = client.query("select * from itemOnCategories where category_id = #{id}")
         items = Array.new
         raw_data.each do |data|
             item = Item.new(data["name"], nil, nil, nil)
@@ -43,27 +47,29 @@ class Category
         categories
     end
 
-    def save
+    def self.save
         # return false unless valid?
         client = create_db_client
         client.query("insert into categories (name) values ('#{name}')")
     end
 
-    def update
+    def self.edit(id, name)
         client = create_db_client
-        client.query("update categories set name = '#{name}' where id = #{id} ")
+        selected_data = client.query("select * from categories where id = #{id}")
+        if selected_data == nil
+            puts("Please insert a valid id")
+        else 
+            client.query("update categories set name = '#{name}' where id = #{id} ")
+        end
     end
 
-    def delete
+    def self.delete(id)
         client = create_db_client
-        client.query("delete from categories where id = #{id}")
+        client.query("delete * from categories where id = #{id}")
 
         # record = self.get_category(id)
         
         # record.empty?
     end
 
-    def valid?
-        return false if @name.nil?
-    end
 end
