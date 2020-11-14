@@ -4,7 +4,7 @@ require './models/category.rb'
 class Item
     attr_accessor :name,:price, :id,  :category_id, :description
 
-    def initialize(name, price, id, category_id=nil, description+nil)
+    def initialize(name, price, id, category_id=nil, description=nil)
         @name = name
         @price = price
         @id = id
@@ -66,19 +66,26 @@ class Item
 
 
     #TODO:
-    def self.edit_item(id, name, price, category_id)
+    def self.edit(id, name, price, category_id)
         client = create_db_client
         selected_data = client.query("select * from items where id = #{id}")
         if selected_data == nil
             puts("Please insert a valid id")
         else 
-            client.query("update items set items.name = '#{name}', items.price = '#{price}', categories.id = '#{category_id}', where id = '#{id}'")
+            client.query("update items i set i.name = '#{name}', i.price = '#{price}' where id = '#{id}'")
+            client.query("update item_categories ic set ic.category_id = '#{category_id}' where item_id = '#{id}'")
+
+            # client.query("UPDATE items i JOIN item_categories ic ON i.id=ic.item_id SET ic.category_id = '#{category_id}', i.name = '#{name}', i.price = '#{price}' where id = '#{id}';
+            
+            #update items set items.name = 'Es Cendol', items.price = '10000' where id = '7';
+            #update item_categories i set i.category_id = '2' where i.item_id = '7'; 
+        end
     end
 
     #TODO:
-    def self.delete_item(name, price, category_id)
+    def self.delete(id)
         client = create_db_client
-        client.query(" ")
+        client.query("delete * from items where id = #{id}")
     end
     
 end
