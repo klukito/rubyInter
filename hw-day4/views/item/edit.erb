@@ -8,9 +8,9 @@
     </head>
 
     <body>
-        <h1 >Create New Item</h1>
+        <h1 >Edit Item</h1>
 
-        <form class="field center-me" method="POST" action="/items/create">
+        <form class="field center-me" method="POST" action="/items/edit">
 
             <table class="box p">
                 <th>
@@ -23,7 +23,7 @@
                 </th>
                 <th>
                     <label for="item_category">Category:</label>
-                     <select id="item_category" name="category">
+                    <select id="item_category" name="category">
                         <% categories.each do |category| %>
                             <option value="<%= category.id %>"><%= category.name %></option>
                         <% end %>
@@ -39,4 +39,4 @@
     </body>
 </html>
 
-<a style="color:#FDF9EA" href="<%= uri('./item_list') %>">List Items</a>
+<a style="color:#FDF9EA" href="<%= uri('./list.erb') %>">List Items</a>

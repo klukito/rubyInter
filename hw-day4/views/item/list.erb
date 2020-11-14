@@ -23,17 +23,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
                     <% items.each do |item| %>
-                        <tr>
-                            <td><%= item.name %></td>
-                            <td>Rp <%= item.price %>,00 </td>
-                            <td><%= item.category.name %></td>
-                        </tr>
+                        <td><%= item.name %></td>
+                        <td>Rp <%= item.price %>,00 </td>
+                        <td><%= item.category.name %></td>
                     <% end %>
-
+                        <td href="<%= uri('./item_edit') %>"> Edit </td>
+                        <td>
+                            <form method="POST" action="/item/delete">
+                                <button type="submit"> Delete </button>
+                            </form>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <a style="color:#FDF9EA" rel="alternate" href="<%= uri('./item_create') %>"> Create New Item</a>
+        <a style="color:#FDF9EA" rel="alternate" href="<%= uri('./create.erb') %>"> Create New Item </a>
     </body> 
 </html>

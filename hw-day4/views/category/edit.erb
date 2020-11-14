@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Edit Category</title>
+    </head>
+
+    <body>
+        <h1 >Edit Category</h1>
+
+        <form class="field center-me" method="POST" action="/items/edit">
+
+            <table class="box p">
+                <th>
+                    <label for="category_id">ID: </label>
+                    <input type="text" name="category_id" id="category_id" />
+                </th>   
+                <th>
+                    <label for="category_name">Name:</label>
+                    <select id="category_name" name="name">
+                        <% categories.each do |category| %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% end %>
+                    </select>
+                </th>
+                <br>
+            </table>
+        <br>
+        <button type="submit"> Add Item </button>
+        </form>
+        <br>
+
+    </body>
+</html>
+
+<a style="color:#FDF9EA" href="<%= uri('./list.erb') %>">List Items</a>

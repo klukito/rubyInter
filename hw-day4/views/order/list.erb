@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <h1 style="text-align:center">ORDER LIST</h1>
+        <h1 style="text-align:center">Order List</h1>
 
         <tbody>
             <tr>
@@ -19,8 +19,14 @@
                     <td><%= order.reference_no%></td>
                     <td><%= order.customer_name%></td>
                     <td><%= order.date%></td>
-                    <td><a href="/form/edit/order/<%= order.reference_no%>">Edit</a></td>
-                    <td><a href="/order/delete/<%= order.reference_no%>">Delete</a></td>
+                    <td>
+                        <a href="<%= uri('./edit.erb') %>">Edit</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="/order/delete/<%=order.reference_no%>">
+                            <button type="submit"> Delete </button>
+                        </form>
+                    </td>
                     <td><a href="/form/add/order/<%= order.reference_no%>">Add Item</a></td>
                     <td><a href="/order/<%= order.reference_no%>/item/list">List Item</a></td>
                 <% end %>
@@ -29,6 +35,6 @@
 
         </tbody>
 
-    <a style="color:#FDF9EA" rel="alternate" href="<%= url ('/order/create') %>"> Create New Order</a>
+    <a style="color:#FDF9EA" rel="alternate" href="<%= uri('./create.erb') %>"> Create New Order</a>
     </body>
 </html>

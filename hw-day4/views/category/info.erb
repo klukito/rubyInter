@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    
+        <link href="<%= url('https://fonts.googleapis.com/css?family=Amaranth') %>" rel='stylesheet'>
+        <link rel="stylesheet" href="<%= url ('style.css') %>">
+        <title>Category Information</title>
+    </head>
+
+    <body>
+        <h1 style="text-align:center">Category Information</h1>
+
+         <table class="box p">
+                <th>
+                    ID = <%= category.id %>
+                </th>
+                <th>
+                    Name = <%= category.name%>
+                </th>   
+                <br>
+            </table>
+    </body>
+    <a style="color:#FDF9EA" rel="alternate" href="<%= uri('/create.erb') %>"> Add New Item</a>
+</html>
